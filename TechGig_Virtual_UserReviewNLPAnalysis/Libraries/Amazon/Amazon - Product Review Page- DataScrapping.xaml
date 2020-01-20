@@ -1,0 +1,292 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Amazon___Product_Review_Page__DataScrapping" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="out_DtDataTable" Type="OutArgument(sd:DataTable)" />
+    <x:Property Name="in_IntResult" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_IntTimeoutS" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_IntTimeoutM" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_IntTimeoutL" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_IntDefaultDelay" Type="InArgument(x:Int32)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>496,732</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Amazon___Product_Review_Page__DataScrapping_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="22">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="36">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="Description  :Review displayed on product page will be read . &#xA;&#xA;Prerequisites :  Review page must be displayed with latest review on top&#xA;&#xA;Outgoing Argument : Data table that has reviews will be stored in it &#xA;&#xA;Result :  The reviews should be read and a data table with those reviews would be passed" DisplayName="Amazon___Product_Review_Page__DataScrapping" sap:VirtualizedContainerService.HintSize="476,672" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Default="Amazon__Click_Review" Name="strComponentName" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message - Start" sap:VirtualizedContainerService.HintSize="434,51" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[String.Format(&quot;Started Component: {0}&quot;, strComponentName)]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+    <TryCatch DisplayName="Try Catch - Amazon___Product_Review_Page__DataScrapping" sap:VirtualizedContainerService.HintSize="434,266" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <TryCatch.Try>
+        <Sequence DisplayName="Amazon___Product_Review_Page__DataScrapping" sap:VirtualizedContainerService.HintSize="560,1365" sap2010:WorkflowViewState.IdRef="Sequence_9">
+          <Sequence.Variables>
+            <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="dtExtractDataTable" />
+            <Variable x:TypeArguments="x:String" Name="strData" />
+          </Sequence.Variables>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Sequence sap2010:Annotation.AnnotationText="[Checks All Required Incoming Arguments For Initialisation And Populated]" DisplayName="Incoming Argument Checks" sap:VirtualizedContainerService.HintSize="518,123" sap2010:WorkflowViewState.IdRef="Sequence_19">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <If Condition="[in_IntResult &lt; 0]" DisplayName="If - Incoming Argument Check - in_IntResult" sap:VirtualizedContainerService.HintSize="579,239" sap2010:WorkflowViewState.IdRef="If_8">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If.Then>
+                <Throw DisplayName="Throw - Incoming Argument" Exception="[new Exception(&quot;Incoming Argument in_IntResult Is Negative Value&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_6" />
+              </If.Then>
+              <If.Else>
+                <ui:LogMessage DisplayName="Log Message - Incoming Argument Checks" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Trace" Message="[String.Format(&quot;Incoming Argument Checked : in_IntResult {0} &quot;,in_IntResult.ToString)]" />
+              </If.Else>
+            </If>
+            <If Condition="[in_IntDefaultDelay &lt; 0]" DisplayName="If - Incoming Argument Check - in_IntDefaultDelay" sap:VirtualizedContainerService.HintSize="579,51" sap2010:WorkflowViewState.IdRef="If_9">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If.Then>
+                <Throw DisplayName="Throw - Incoming Argument" Exception="[new Exception(&quot;Incoming Argument in_IntDefaultDelay Is Negative Value&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_7" />
+              </If.Then>
+              <If.Else>
+                <ui:LogMessage DisplayName="Log Message - Incoming Argument Checks" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Trace" Message="[String.Format(&quot;Incoming Argument Checked : in_IntDefaultDelay {0} &quot;,in_IntDefaultDelay.ToString)]" />
+              </If.Else>
+            </If>
+            <If Condition="[in_IntTimeoutS &lt; 0]" DisplayName="If - Incoming Argument Check - in_IntTimeoutS" sap:VirtualizedContainerService.HintSize="579,51" sap2010:WorkflowViewState.IdRef="If_10">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If.Then>
+                <Throw DisplayName="Throw - Incoming Argument" Exception="[new Exception(&quot;Incoming Argument in_IntTimeoutS Is Negative Value&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_8" />
+              </If.Then>
+              <If.Else>
+                <ui:LogMessage DisplayName="Log Message - Incoming Argument Checks" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Trace" Message="[String.Format(&quot;Incoming Argument Checked : in_IntTimeoutS {0} &quot;,in_IntTimeoutS.ToString)]" />
+              </If.Else>
+            </If>
+            <If Condition="[in_IntTimeoutM &lt; 0]" DisplayName="If - Incoming Argument Check - in_IntTimeoutM" sap:VirtualizedContainerService.HintSize="579,51" sap2010:WorkflowViewState.IdRef="If_11">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If.Then>
+                <Throw DisplayName="Throw - Incoming Argument" Exception="[new Exception(&quot;Incoming Argument in_IntTimeoutM Is Negative Value&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_9" />
+              </If.Then>
+              <If.Else>
+                <ui:LogMessage DisplayName="Log Message - Incoming Argument Checks" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Trace" Message="[String.Format(&quot;Incoming Argument Checked : in_IntTimeoutM {0} &quot;,in_IntTimeoutM.ToString)]" />
+              </If.Else>
+            </If>
+            <If Condition="[in_IntTimeoutL &lt; 0]" DisplayName="If - Incoming Argument Check - in_IntTimeoutL" sap:VirtualizedContainerService.HintSize="579,51" sap2010:WorkflowViewState.IdRef="If_12">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If.Then>
+                <Throw DisplayName="Throw - Incoming Argument" Exception="[new Exception(&quot;Incoming Argument in_IntTimeoutL Is Negative Value&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_10" />
+              </If.Then>
+              <If.Else>
+                <ui:LogMessage DisplayName="Log Message - Incoming Argument Checks" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Trace" Message="[String.Format(&quot;Incoming Argument Checked : in_IntTimeoutL {0} &quot;,in_IntTimeoutL.ToString)]" />
+              </If.Else>
+            </If>
+          </Sequence>
+          <Sequence DisplayName="Pre-Condition" sap:VirtualizedContainerService.HintSize="518,66" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:Boolean" Name="boolACMEPageExists" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:Comment sap:VirtualizedContainerService.HintSize="334,56" sap2010:WorkflowViewState.IdRef="Comment_3" Text="// Not applicable here" />
+          </Sequence>
+          <Sequence DisplayName="Do Work" sap:VirtualizedContainerService.HintSize="518,792" sap2010:WorkflowViewState.IdRef="Sequence_22">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Sequence DisplayName="Data Scraping" sap:VirtualizedContainerService.HintSize="476,537" sap2010:WorkflowViewState.IdRef="Sequence_21">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser 'AmazoninC Page'" sap:VirtualizedContainerService.HintSize="434,445" sap2010:WorkflowViewState.IdRef="BrowserScope_4" InformativeScreenshot="5eb65df3ee828ad2109c566ce018c3d3" Selector="&lt;html app='chrome.exe' htmlwindowname='https://images-eu.ssl-images-amazon.com/images/I/51tax7M48-L._RC%7C516fcOUE-HL.css,01evdoiemkL.css,01K+Ps1DeEL.css,31pdJv9iSzL.css,01VszOUTO6L.css,11UGC+GXOPL.css,21LK7jaicML.css,11L58Qpo0GL.css,21kyTi1FabL.css,01ruG+gDPFL.css,01YhS3Cs-hL.css,21GwE3cR-yL.c*' title='Amazon.in*' /&gt;" TimeoutMS="[in_IntTimeoutM]">
+                <ui:BrowserScope.Body>
+                  <ActivityAction x:TypeArguments="x:Object">
+                    <ActivityAction.Argument>
+                      <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+                    </ActivityAction.Argument>
+                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,299" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:ExtractData DelayBetweenPagesMS="{x:Null}" ContinueOnError="True" DataTable="[out_DtDataTable]" DisplayName="Extract Structured Data 'DIV  cm_cr-review_list'" ExtractMetadata="&lt;extract&gt;&lt;row exact='1'&gt;&lt;webctrl tag='div' class='a-section review aok-relative'/&gt;&lt;webctrl tag='div' class='a-row a-spacing-none' idx='1'/&gt;&lt;/row&gt;&lt;column exact='1' name='Entire Details' attr='text'&gt;&lt;webctrl tag='div' class='a-section review aok-relative'/&gt;&lt;webctrl tag='div' class='a-row a-spacing-none' idx='1'/&gt;&lt;webctrl tag='div' class='a-section celwidget' idx='1'/&gt;&lt;/column&gt;&lt;column exact='1' name='Review Rating' attr='text'&gt;&lt;webctrl tag='div' class='a-section review aok-relative'/&gt;&lt;webctrl tag='div' class='a-row a-spacing-none' idx='1'/&gt;&lt;webctrl tag='div' class='a-section celwidget' idx='1'/&gt;&lt;webctrl tag='div' class='a-row' idx='1'/&gt;&lt;webctrl tag='a' class='a-link-normal' idx='1'/&gt;&lt;webctrl tag='i'/&gt;&lt;/column&gt;&lt;column exact='1' name='Review Title' attr='text'&gt;&lt;webctrl tag='div' class='a-section review aok-relative'/&gt;&lt;webctrl tag='div' class='a-row a-spacing-none' idx='1'/&gt;&lt;webctrl tag='div' class='a-section celwidget' idx='1'/&gt;&lt;webctrl tag='div' class='a-row' idx='1'/&gt;&lt;webctrl tag='a' class='a-size-base a-link-normal review-title a-color-base review-title-content a-text-bold' idx='1'/&gt;&lt;webctrl tag='span' idx='1'/&gt;&lt;/column&gt;&lt;column exact='1' name='Review Date' attr='text'&gt;&lt;webctrl tag='div' class='a-section review aok-relative'/&gt;&lt;webctrl tag='div' class='a-row a-spacing-none' idx='1'/&gt;&lt;webctrl tag='div' class='a-section celwidget' idx='1'/&gt;&lt;webctrl tag='span' class='a-size-base a-color-secondary review-date' idx='1'/&gt;&lt;/column&gt;&lt;column exact='1' name='Review Description' attr='text'&gt;&lt;webctrl tag='div' class='a-section review aok-relative'/&gt;&lt;webctrl tag='div' class='a-row a-spacing-none' idx='1'/&gt;&lt;webctrl tag='div' class='a-section celwidget' idx='1'/&gt;&lt;webctrl tag='div' class='a-row a-spacing-small review-data' idx='1'/&gt;&lt;webctrl tag='span' class='a-size-base review-text review-text-content' idx='1'/&gt;&lt;webctrl tag='span' idx='1'/&gt;&lt;/column&gt;&lt;/extract&gt;" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="ExtractData_4" MaxNumberOfResults="[in_IntResult]" NextLinkSelector="&lt;webctrl aaname='Next page→' parentid='cm_cr-pagination_bar' tag='A' /&gt;" SimulateClick="True">
+                        <ui:ExtractData.Target>
+                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="f53c2a99c4c77c7599f8bb618a7f60e7" Selector="&lt;webctrl id='cm_cr-review_list' tag='DIV' parentid='a-page' /&gt;" TimeoutMS="[in_IntTimeoutM]" WaitForReady="COMPLETE" />
+                        </ui:ExtractData.Target>
+                      </ui:ExtractData>
+                      <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[&quot;Total Count is : &quot;+out_DtDataTable.Rows.Count.ToString]" />
+                    </Sequence>
+                  </ActivityAction>
+                </ui:BrowserScope.Body>
+              </ui:BrowserScope>
+            </Sequence>
+            <ui:OutputDataTable DataTable="[out_DtDataTable]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="476,22" sap2010:WorkflowViewState.IdRef="OutputDataTable_2" Text="[strData]" />
+            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="476,61" sap2010:WorkflowViewState.IdRef="WriteLine_4" Text="[strData]" />
+          </Sequence>
+          <Sequence DisplayName="Post-Condition" sap:VirtualizedContainerService.HintSize="518,66" sap2010:WorkflowViewState.IdRef="Sequence_5">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:Boolean" Name="boolACMEPageExists" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:Comment sap:VirtualizedContainerService.HintSize="334,55" sap2010:WorkflowViewState.IdRef="Comment_4" Text="// Not applicable here" />
+          </Sequence>
+          <Sequence DisplayName="Outgoing Argument Checks" sap:VirtualizedContainerService.HintSize="518,66" sap2010:WorkflowViewState.IdRef="Sequence_23">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <If Condition="[out_DtDataTable.Rows.Count=0]" sap:VirtualizedContainerService.HintSize="579,239" sap2010:WorkflowViewState.IdRef="If_13">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If.Then>
+                <Throw Exception="[New Exception(String.Format(&quot;{0} | {1}&quot;,strComponentName ,&quot;Details of product was not read&quot;))]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_11" />
+              </If.Then>
+              <If.Else>
+                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Info" Message="[&quot;Pre-Condition Successful  Instance of Amazon Application at Amazon Detail  Screen  Exist”]" />
+              </If.Else>
+            </If>
+          </Sequence>
+        </Sequence>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,104" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+            </ActivityAction.Argument>
+            <Throw DisplayName="Throw Component Failure" Exception="[new ApplicationException(String.Format(&quot;{0} | {1}&quot;,strComponentName,exception.Message))]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_3" />
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+    </TryCatch>
+    <ui:LogMessage DisplayName="Log Message - End" sap:VirtualizedContainerService.HintSize="434,51" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[String.Format(&quot;Ended Component: {0}&quot;, strComponentName)]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+  </Sequence>
+</Activity>

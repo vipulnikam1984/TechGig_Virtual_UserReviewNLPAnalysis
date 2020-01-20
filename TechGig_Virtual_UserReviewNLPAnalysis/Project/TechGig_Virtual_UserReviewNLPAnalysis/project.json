@@ -1,0 +1,54 @@
+{
+  "name": "TechGig_Virtual_UserReviewNLPAnalysis",
+  "description": "TechGig_Virtual_UserReviewNLPAnalysis\r\n- Read relevant email from outlook \r\n-  Get the reviews from relevent web applications \r\n-  Apply NLP to get review analysis",
+  "main": "Main.xaml",
+  "dependencies": {
+    "Amazon": "[1.0.8]",
+    "Flipkart": "[1.0.6]",
+    "Generic": "[1.0.11]",
+    "Google": "[1.0.6]",
+    "Outlook": "[1.0.2]",
+    "SentimentAPI": "[1.0.5]",
+    "UiPath.Credentials.Activities": "[1.1.6479.13204]",
+    "UiPath.Excel.Activities": "[2.8.0-preview]",
+    "UiPath.Mail.Activities": "[1.8.0-preview]",
+    "UiPath.System.Activities": "[19.12.0-preview]",
+    "UiPath.UIAutomation.Activities": "[19.12.0-preview]"
+  },
+  "webServices": [],
+  "schemaVersion": "4.0",
+  "studioVersion": "19.12.0.61",
+  "projectVersion": "1.0.1",
+  "runtimeOptions": {
+    "autoDispose": false,
+    "isPausable": true,
+    "requiresUserInteraction": true,
+    "supportsPersistence": false,
+    "excludedLoggedData": [
+      "Private:*",
+      "*password*"
+    ],
+    "executionType": "Workflow"
+  },
+  "designOptions": {
+    "projectProfile": "Developement",
+    "outputType": "Process",
+    "libraryOptions": {
+      "includeOriginalXaml": false,
+      "privateWorkflows": []
+    },
+    "fileInfos": []
+  },
+  "arguments": {
+    "input": [
+      {
+        "name": "OrchestratorQueueName",
+        "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "required": false,
+        "hasDefault": false
+      }
+    ],
+    "output": []
+  },
+  "expressionLanguage": "VisualBasic"
+}

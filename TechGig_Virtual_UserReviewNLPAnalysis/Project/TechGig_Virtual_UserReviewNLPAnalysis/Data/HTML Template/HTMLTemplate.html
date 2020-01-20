@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script>
+		window.onscroll = function() {myFunction()};
+
+		var header = document.getElementById("product");
+		var sticky = header.offsetTop;
+
+		function myFunction() {
+		  if (window.pageYOffset > sticky) {
+			header.classList.add("sticky");
+		  } else {
+			header.classList.remove("sticky");
+		  }
+		}
+	</script>
+    <script type="text/javascript">
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['User Review', 'Count'],
+          ['Good', {!GoodCount!}],
+          ['Average', {!AverageCount!}],
+          ['Bad', {!BadCount!}]
+        ]);
+
+        var options = {
+          pieHole: 0.4,
+		  backgroundColor: 'transparent',
+		  slices: {
+            0: { color: '#00b300' },
+            1: { color: '#ffc34d' },
+            2: { color: '#ff3300' }
+          }
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+        chart.draw(data, options);
+      }
+    </script>
+    <script type="text/javascript">
+        google.charts.load("current", {packages:["corechart"]});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+          var dataAmazon = google.visualization.arrayToDataTable([
+            ["Element", "Density", { role: "style" } ],
+            ["5 Stars", {!A5S!}, "#3de382"],
+            ["4 Stars", {!A4S!}, "#9cffc5"],
+            ["3 Stars", {!A3S!}, "#ffffa6"],
+            ["2 Stars", {!A2S!}, "#ffb9a6"],
+            ["1 Stars", {!A1S!}, "#f55353"]
+          ]);
+          
+          var dataFlipkart = google.visualization.arrayToDataTable([
+            ["Element", "Density", { role: "style" } ],
+            ["5 Stars", {!F5S!}, "#3de382"],
+            ["4 Stars", {!F4S!}, "#9cffc5"],
+            ["3 Stars", {!F3S!}, "#ffffa6"],
+            ["2 Stars", {!F2S!}, "#ffb9a6"],
+            ["1 Stars", {!F1S!}, "#f55353"]
+          ]);
+          
+          var dataGoogle = google.visualization.arrayToDataTable([
+            ["Element", "Density", { role: "style" } ],
+            ["5 Stars", {!G5S!}, "#3de382"],
+            ["4 Stars", {!G4S!}, "#9cffc5"],
+            ["3 Stars", {!G3S!}, "#ffffa6"],
+            ["2 Stars", {!G2S!}, "#ffb9a6"],
+            ["1 Stars", {!G1S!}, "#f55353"]
+          ]);
+
+          var viewAmazon = new google.visualization.DataView(dataAmazon);
+          var viewFlipkart = new google.visualization.DataView(dataFlipkart);
+          var viewGoogle = new google.visualization.DataView(dataGoogle);
+          
+          viewAmazon.setColumns([0, 1,
+                           { calc: "stringify",
+                             sourceColumn: 1,
+                             type: "string",
+                             role: "annotation" },
+                           2]);
+           
+          viewFlipkart.setColumns([0, 1,
+                           { calc: "stringify",
+                             sourceColumn: 1,
+                             type: "string",
+                             role: "annotation" },
+                           2]);
+          
+          viewGoogle.setColumns([0, 1,
+                           { calc: "stringify",
+                             sourceColumn: 1,
+                             type: "string",
+                             role: "annotation" },
+                           2]);
+
+          var options = {
+            width: 600,
+            height: 400,
+            bar: {groupWidth: "95%"},
+            legend: { position: "none" },
+          };
+          
+          var chartAmazon = new google.visualization.BarChart(document.getElementById("barchart_Amazon"));
+          chartAmazon.draw(viewAmazon, options);
+          
+          var chartGoogle = new google.visualization.BarChart(document.getElementById("barchart_Google"));
+          chartGoogle.draw(viewGoogle, options);
+          
+          var chartFlipkart = new google.visualization.BarChart(document.getElementById("barchart_Flipkart"));
+          chartFlipkart.draw(viewFlipkart, options);
+      }
+    </script>
+	<style>
+		* {
+		  box-sizing: border-box;
+		}
+
+		body 
+		{
+		  margin: 0;
+		  position: relative;
+		  font-family: Arial, Helvetica, sans-serif;
+		}
+
+		.header 
+		{
+		  padding: 5px 16px;
+		  background: #65c6e3;
+		  color: #f1f1f1;
+		}
+		
+		.headerP 
+		{
+			padding: 5px 16px;
+			background: #4a4a4a;
+			color: #f1f1f1;
+		}
+		
+		.content 
+		{
+		  padding: 16px;
+		}
+		
+		.sticky 
+		{
+		  position: fixed;
+		  top: 0;
+		  width: 100%;
+		}
+
+		.sticky + .content 
+		{
+		  padding-top: 102px;
+		}
+
+		/* Create four equal columns that floats next to each other */
+		.column {
+		  float: left;
+		  padding: 10px;
+		  margin: 30px 10px;
+		text-align: center;
+		}
+
+		.column li {
+		  margin: 10px 0px;
+		}
+
+		.column h2 {
+		  padding: 0px 15px;
+		}
+
+
+		/* Clear floats after the columns */
+		.row:after {
+		  content: "";
+		  display: table;
+		  clear: both;
+		}
+
+		/* Responsive layout - makes a two column-layout instead of four columns */
+		@media screen and (max-width: 900px) {
+		  .column  {
+			width: 50%;
+			margin: 30px 0pc;
+			text-align: center;
+		  }
+		}
+
+		/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+		@media screen and (max-width: 600px) {
+		  .column  {
+			width: 100%;
+			margin: 30px 0pc;
+			text-align: center;
+		  }
+		}
+	</style>
+</head>
+<body>
+
+<div class="header" id="myHeader">
+			<h1>User Review Analysis</h1>
+		</div>
+		
+<div class="headerP" id="product">
+  <h2>{!ProductName!}</h2>
+</div>
+
+<div class="content">
+	<div class="row">
+	  <div class="column" style="text-align: Left">
+	  <h2>NLP Sentiment Analysis</h2>
+	  <div id="donutchart" style="width: 500px; height: 400px;"></div>
+	  </div>
+	  <div class="column" style="background-color:#dbffd6; text-align: Left">
+	  <h2>NLP Key Phrase - Pros</h2>  
+		 <ul style="list-style-type:disc;">
+			{!GoodKeyPhrases!}
+		  </ul> 
+	  </div>
+	  <div class="column" style="background-color:#ffc1c1; text-align: Left">
+	  <h2>NLP Key Phrase - Cons</h2>    
+		 <ul style="list-style-type:disc;">
+			{!BadKeyPhrases!}
+		  </ul> 
+	  </div>
+	  </div>
+	</div>
+	<div class="row">
+	  <div class="column" style="">
+		<h2>User Ratings - Amazon</h2>
+		<div id="barchart_Amazon" style="width: 500px; height: 300px;"></div>
+	  </div>
+	  
+	  <div class="column" style="">
+		<h2>User Ratings - Google</h2>
+		<div id="barchart_Google" style="width: 500px; height: 300px;"></div>
+	  </div>
+	  
+	  <div class="column" style="">
+		<h2>User Ratings - Flipkart</h2>
+		<div id="barchart_Flipkart" style="width: 500px; height: 300px;"></div>
+	  </div>
+	  
+	</div>
+	<div class="row">
+	</div>
+	<div class="row">
+	</div>
+</div>
+</body>
+</html>
